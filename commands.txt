@@ -1,0 +1,37 @@
+"""This file contains useful commands to run
+the training and evaluation script. Simply copy
+and paste into the terminal.
+"""
+
+# command for evaluating a model:
+
+python run_squad.py \
+  --model_type albert \
+  --do_eval \
+  --predict_file ./dev.json \
+  --max_seq_length 384 \
+  --doc_stride 128 \
+  --version_2_with_negative \
+  --do_lower_case \
+  --per_gpu_eval_batch_size 1 \
+  --output_dir ./<dir name here>/ \
+  --model_name_or_path ./<base dir of model>/
+
+# command to train model
+
+python run_squad.py \
+  --model_type albert \
+  --do_train \
+  --do_eval \
+  --per_gpu_train_batch_size 12 \
+  --learning_rate 1.5e-6 \
+  --num_train_epochs 2.0 \
+  --max_seq_length 384 \
+  --doc_stride 128 \
+  --version_2_with_negative \
+  --do_lower_case \
+  --overwrite_cache \
+  --model_name_or_path <base model name or path> \
+  --output_dir <desired output loc> \
+  --predict_file <test data loc> \
+  --train_file <training data loc>
